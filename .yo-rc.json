@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Michael Blume",
+      "authorEmail": "mblume@ibm.com",
+      "authorUrl": ""
+    }
+  }
+}

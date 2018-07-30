@@ -17,11 +17,16 @@
     "chalk": "^2.1.0",
     "common-codegen-tests": "2.2.3",
     "fs-extra": "^2.0.0",
+    "generator-ibm-core-golang-gin": "1.0.0",
+    "generator-ibm-cloud-enablement": "1.0.0",
+    "generator-ibm-service-enablement": "1.0.0",
+    "generator-ibm-web": "^1.2.6",
     "handlebars": "^4.0.10",
     "js-yaml": "^3.9.0",
     "lodash": "^4.17.4",
     "log4js": "^2.2.3",
     "yeoman-generator": "^2.0.1",
+    "yo": "^2.0.5",
     "yosay": "^2.0.1"
   },
   "scripts": {

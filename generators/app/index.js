@@ -1,14 +1,17 @@
 /*
-© Copyright IBM Corp. 2017, 2018
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-http://www.apache.org/licenses/LICENSE-2.0
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+* © Copyright IBM Corp. 2018
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
 */
 
 'use strict';
@@ -68,10 +71,10 @@ module.exports = class extends Generator {
       this.interactiveMode = true;
       this.options = {
         bluemix: { backendPlatform: 'GO' },
-        spec: { applicationType: 'WEB' },
-        framework: 'None'
+        spec: {}
       };
     } else {
+      this.options.bluemix.backendPlatform = 'GO';
       // If bluemix contains app name, sanitize it
       if (this.options.bluemix.name) {
         this.options.bluemix.name = helpers.sanitizeAppName(this.options.bluemix.name);
@@ -82,6 +85,12 @@ module.exports = class extends Generator {
           this.options.addServices = true;
         }
       });
+      // If local user provides path to Swagger file in the --bluemix option
+      if (this.options.bluemix.swaggerFilePath) {
+        this.options.bluemix.swaggerFilePath = this.options.bluemix.swaggerFilePath.trim();
+        let swagger = fs.readFileSync(this.options.bluemix.swaggerFilePath, "utf8");
+        this.options.bluemix.openApiServers = [{ "spec": swagger }];
+      }
     }
   }
 
@@ -264,7 +273,7 @@ module.exports = class extends Generator {
     this.options.spec.applicationType = this.options.spec.applicationType || 'BLANK';
     this.options.bluemix.quiet = true; // suppress version messages
 
-    this.composeWith(require.resolve('generator-core-golang-gin'), this.options);
+    this.composeWith(require.resolve('generator-ibm-core-golang-gin'), this.options);
 
     if (this.options.spec.applicationType === "WEBAPP"){
       this.composeWith(require.resolve('generator-ibm-web/generators/app'), this.options);
@@ -287,6 +296,14 @@ module.exports = class extends Generator {
         path.join(process.env.GOPATH, 'src/', this.options.bluemix.name)
       );
     }
+  }
+
+  writing() {
+    this.fs.copyTpl(
+      this.templatePath('README.md'),
+      this.destinationPath('README.md'),
+      this.options
+    );
   }
 
   // Return true if 'sanitized', false if missing, exception if bad data

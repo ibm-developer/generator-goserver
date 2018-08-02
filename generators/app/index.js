@@ -76,8 +76,8 @@ module.exports = class extends Generator {
     } else {
       this.options.bluemix.backendPlatform = 'GO';
       // If bluemix contains app name, sanitize it
-      if (this.options.bluemix.name) {
-        this.options.bluemix.name = helpers.sanitizeAppName(this.options.bluemix.name);
+      if (this.options.bluemix.name && !this.options.bluemix.sanitizedName) {
+        this.options.bluemix.sanitizedName = helpers.sanitizeAppName(this.options.bluemix.name);
       }
       // If bluemix exists, check if it includes any services
       Object.keys(this.options.bluemix).forEach((key) => {
@@ -209,7 +209,8 @@ module.exports = class extends Generator {
 
     return this.prompt(prompts).then(props => {
       this.options.addServices = props.addCloudServices;
-      this.options.bluemix.name = helpers.sanitizeAppName(props.appName);
+      this.options.bluemix.name = props.appName;
+      this.options.bluemix.sanitizedName = helpers.sanitizeAppName(props.appName);
       this.options.bluemix["server"] = [];
       this.options.bluemix.server.cloudDeploymentType = props.deploymentType;
       this.options.bluemix.server.name = this.options.bluemix.name;
@@ -238,14 +239,10 @@ module.exports = class extends Generator {
         this.env.error("GOPATH environment variable not defined. For help setting the GOPATH visit this link: https://github.com/golang/go/wiki/SettingGOPATH");
       } else {
         // Place the app in GOPATH/src/<appname>
-        this.destinationRoot(path.join(process.env.GOPATH, 'src/', this.options.bluemix.name));
+        this.destinationRoot(path.join(process.env.GOPATH, 'src/', this.options.bluemix.sanitizedName));
       }
-    } else {
-      this.destinationRoot(path.join(this.destinationRoot(), this.options.bluemix.name));
-    }
+    } 
   }
-
-  configuring() { }
 
   // store specified option in bluemix object to drive generator-ibm-service-enablement
   _storeServiceName(service) {
@@ -293,7 +290,7 @@ module.exports = class extends Generator {
     if (this.interactiveMode) {
       this.log(
         'Your project has been generated at ' +
-        path.join(process.env.GOPATH, 'src/', this.options.bluemix.name)
+        path.join(process.env.GOPATH, 'src/', this.options.bluemix.sanitizedName)
       );
     }
   }

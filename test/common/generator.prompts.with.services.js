@@ -30,7 +30,7 @@ let PROJECT_NAME = '';
 let appPath = ''
 function newAppPath() {
   do{
-    PROJECT_NAME = 'ProjectName' + Math.random().toString(36).substring(0, 12)
+    PROJECT_NAME = 'Project Name' + Math.random().toString(36).substring(0, 12)
     appPath = path.join(
       process.env.GOPATH || '',
       'src/',

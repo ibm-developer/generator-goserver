@@ -31,7 +31,7 @@ let PROJECT_NAME = '';
 let appPath = ''
 function newAppPath() {
   do{
-    PROJECT_NAME = 'ProjectName' + Math.random().toString(36).substring(0, 12)
+    PROJECT_NAME = 'Project Name' + Math.random().toString(36).substring(0, 12)
     appPath = path.join(
       process.env.GOPATH || '',
       'src/',
@@ -90,7 +90,7 @@ describe('Generates a web app with no framework through prompts', function() {
     it('contains default project name', () => {
       assert.fileContent(
         common.commonFile.README_md,
-        myHelpers.sanitizeAppName(PROJECT_NAME)
+        PROJECT_NAME
       );
     });
 
@@ -201,7 +201,7 @@ describe('Generates blank app with no swagger file through prompts', () => {
     it('contains default project name', () => {
       assert.fileContent(
         common.commonFile.README_md,
-        myHelpers.sanitizeAppName(PROJECT_NAME)
+        PROJECT_NAME
       );
     });
 

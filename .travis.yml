@@ -10,10 +10,10 @@ before_install:
 - export GOPATH="/tmp/go"
 - export PATH="/tmp/go/bin:${PATH}"
 install: ./install_sub_generators.sh
-script: npm test && npm run coveralls && ./npm_version_upgrade.sh
+script: npm test && npm run coveralls
 branches:
   only:
   - develop
   - master
 
-  
+

@@ -1,0 +1,26 @@
+{
+	"name": "Acme Project",
+	"sanitizedName" : "Acme-Project",
+	"backendPlatform": "GO",
+	"sdks": [
+		{
+			"name": "PetStore",
+			"spec": "http://petstore.swagger.io/v2/swagger.json"
+		}
+	],
+	"server": {
+		"diskQuota": "manifest-disk-quota",
+		"domain": "manifest-domain",
+		"env": {},
+		"host": "manifest-host",
+		"instances": 3,
+		"memory": "manifest-memory",
+		"name": "manifest-name",
+		"organization": "manifest-org",
+		"services": [
+			"my-service1-instance",
+			"my-service2-instance"
+		],
+		"space": "manifest-space"
+	}
+}

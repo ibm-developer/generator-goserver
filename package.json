@@ -1,0 +1,54 @@
+{
+  "name": "generator-goserver",
+  "version": "0.0.0",
+  "description": "Generates a goserver project.",
+  "main": "generators/app/index.js",
+  "engines": {
+    "node": ">= 6.0.0"
+  },
+  "files": [
+    "generators",
+    "lib"
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "chalk": "^2.1.0",
+    "common-codegen-tests": "2.2.3",
+    "fs-extra": "^2.0.0",
+    "generator-ibm-cloud-enablement": "^1.1.7",
+    "generator-ibm-core-golang-gin": "^0.0.1",
+    "generator-ibm-service-enablement": "^2.4.5",
+    "generator-ibm-web": "^1.3.0",
+    "handlebars": "^4.0.10",
+    "js-yaml": "^3.9.0",
+    "lodash": "^4.17.4",
+    "log4js": "^2.2.3",
+    "yeoman-generator": "^2.0.1",
+    "yo": "^2.0.5",
+    "yosay": "^2.0.1"
+  },
+  "scripts": {
+    "pretest": "eslint .",
+    "test": "npm run lint && npm run mocha",
+    "lint": "eslint .",
+    "mocha": "nyc --reporter=lcov mocha test/common/* --reporter mocha-multi-reporters --reporter-options configFile=config.json",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "version": "standard-version"
+  },
+  "devDependencies": {
+    "coveralls": "^2.13.3",
+    "eslint": "^4.19.1",
+    "eslint-plugin-ejs": "0.0.2",
+    "mocha": "^3.5.3",
+    "mocha-multi-reporters": "^1.1.7",
+    "nsp": "^2.8.0",
+    "nyc": "^10.3.0",
+    "standard-version": "^4.3.0",
+    "xunit-file": "^1.0.0",
+    "yeoman-assert": "^3.1.0",
+    "yeoman-test": "^1.7.0"
+  },
+  "repository": "https://github.com/ibm-developer/generator-goserver"
+}

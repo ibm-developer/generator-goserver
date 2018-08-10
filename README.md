@@ -1,9 +1,27 @@
 #  GoServer Generator
 
 [![IBM Cloud powered][img-ibmcloud-powered]][url-cloud]
+[![Travis][img-travis-master]][url-travis-master]
+[![Coveralls][img-coveralls-master]][url-coveralls-master]
+[![Version][img-version]][url-npm]
+[![DownloadsMonthly][img-npm-downloads-monthly]][url-npm]
+[![DownloadsTotal][img-npm-downloads-total]][url-npm]
+[![License][img-license]][url-npm]
 
 [img-ibmcloud-powered]: https://img.shields.io/badge/IBM%20Cloud-powered-blue.svg
 [url-cloud]: http://bluemix.net
+[url-npm]: https://www.npmjs.com/package/generator-goserver
+[img-license]: https://img.shields.io/npm/l/generator-goserver.svg
+[img-version]: https://img.shields.io/npm/v/generator-goserver.svg
+[img-npm-downloads-monthly]: https://img.shields.io/npm/dm/generator-goserver.svg
+[img-npm-downloads-total]: https://img.shields.io/npm/dt/generator-goserver.svg
+
+[img-travis-master]: https://travis-ci.org/ibm-developer/generator-goserver.svg?branch=master
+[url-travis-master]: https://travis-ci.org/ibm-developer/generator-goserver/branches
+
+[img-coveralls-master]: https://coveralls.io/repos/github/ibm-developer/generator-goserver/badge.svg
+[url-coveralls-master]: https://coveralls.io/github/ibm-developer/generator-goserver
+
 
 ## Overview
 

@@ -84,7 +84,7 @@ When you run 'yo goserver', it will prompt you for the following:
 
 1. Deployment type
 
-    Specifies the environment to which you would want to deploy you app to. Options are Cloud Foundry, Kubernetes or VSI.
+    Specifies the environment to which you would want to deploy you app to. Options are Cloud Foundry or Kubernetes.
 
 1. IBM Cloud Service Enablement
 

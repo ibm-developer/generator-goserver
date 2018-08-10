@@ -9,17 +9,17 @@
 
 This generator produces a Go + Gin server project with all the ingredients you need for a good start at building a cloud native application. You can choose between either a simple web app, microservice pattern, or a simple blank app.
 
-You can also bring your own optional [Swagger document](https://swagger.io/) to direct code generation for top-down development.
+You can also bring your own optional [OpenAPI 2.0 document](https://swagger.io/docs/specification/2-0/basic-structure/) to direct code generation for top-down development.
 
 ### Monitoring and Health
 
-The generated projects are pre-wired for monitoring and health checks. The app includes
+The generated projects are pre-wired for monitoring and health checks. The app includes:
 
-1. [app metrics dashboard](github.com/afex/hystrix-go)
+1. [Prometheus endpoint](https://github.com/prometheus/client_golang)
 
-1. [Prometheus endpoint](github.com/prometheus/client_golang)
+1. [Hystrix fault tolerance](https://github.com/afex/hystrix-go)
 
-1. [Kubernetes http liveness probe](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/)
+1. `/health` endpoint returning JSON payload for UP and DOWN
 
 ### Deployment Enablement  
 
@@ -27,7 +27,7 @@ The generated projects include deployment configuration for the following enviro
 
 1. Docker
 
-    The projects include Docker files to build images for both release and development
+    The projects include Dockerfiles to build images for both release and development.
 
 1. Kubernetes
 
@@ -66,17 +66,17 @@ When running the generator with prompts, make sure you set up a [GOPATH](https:/
 
 When you run 'yo goserver', it will prompt you for the following:
 
-1. project name
+1. Application name
 
-    Specify the project name. It defaults to the current directory name.  This is a required value.
+    Specify the application name. It defaults to the current directory name.  This is a required value.
 
-1. application type
+1. Application type
 
     Specify the type of application you want to create. The options are basic web app, microservice, or a simple blank app.
 
-1. Swagger doc file name (if blank application type selected)
+1. OpenAPI 2.0 doc file name (if blank application type selected)
 
-    Specify the relative or absolute file name of a Swagger document to direct the project's code generation. A route stub will be scaffolded and registered for each route defined in the swagger document. This is an optional value.
+    Specify the relative or absolute file name of a OpenAPI 2.0 document to direct the project's code generation. A route stub will be scaffolded and registered for each route defined in the OpenAPI 2.0 document. This is an optional value.
 
 1. Docker registery
 
@@ -86,7 +86,7 @@ When you run 'yo goserver', it will prompt you for the following:
 
     Specifies the environment to which you would want to deploy you app to. Options are Cloud Foundry, Kubernetes or VSI.
 
-1. IBM Cloud Service Enablement.
+1. IBM Cloud Service Enablement
 
     Specify Y|N whether or not you want to scaffold IBM Cloud service enablement into your project.  If you specify 'Y', you will be able to select one or more services from a checklist. For each service you select, configuration and access scaffolding code is generated.  IBM Cloud service enablement is optional.
 
@@ -95,6 +95,7 @@ Use bluemix mode to create an app without having to use the UI. This is useful w
 
 #### Bluemix usage
 To specify the name of the project use:
+
 ```bash
 yo goserver --bluemix='{"name":"your-app-name"}'
 ```
@@ -102,7 +103,7 @@ yo goserver --bluemix='{"name":"your-app-name"}'
 To specify the type of your application:
 
 ```bash
-yo go server --bluemix='{"name":"your-app-name"}' --spec='{"applicationType":"your-app-type"}'
+yo goserver --bluemix='{"name":"your-app-name"}' --spec='{"applicationType":"your-app-type"}'
 ```
 
 The three valid application types are: WEBAPP, MS, and BLANK
@@ -119,7 +120,7 @@ Full usage:
 yo goserver --bluemix='{"name":"your-app-name","swaggerFilePath":"path-to-your-file","services":["service1", "service2"]}' --spec='{"applicationType":"your-app-type"}'
 ```
 
-Note you can only provide a swagger path if it is a blank application.
+Note: you can only provide a swagger path if it is a blank application.
 
 #### Valid Services
 
@@ -148,7 +149,7 @@ Build your generated project one of two ways:
 1. Containerized, using IBM Cloud Developer Tools.
 
     - Install [IBM Cloud Developer Tools](https://console.bluemix.net/docs/cli/idt/setting_up_idt.html#add-cli) on your machine  
-    - Install the plugin with:`ibmcloud plugin install dev`
+    - Install the dev plugin: `ibmcloud plugin install dev`
 
     Note that a containerized approach is supported through the tooling in special consideration of Kubernetes as a deployment environment, following the dev/prod parity principle of [12 Factor Apps](https://12factor.net/).
 
@@ -191,17 +192,17 @@ Deploy to Kubernetes using Helm or the IBM Cloud Developer Tools.
 
 1. Helm
 
-    1. Push your image to a Docker image accessible to your Kubernetes environment, such as [Docker Hub](dockerhub.com) or your company's private image registry.
+    1. Push your image to a Docker image accessible to your Kubernetes environment, such as [Docker Hub](https://hub.docker.com) or your company's private image registry.
 
     1. Install your project from the project's root directory, using the included Helm chart:
 
-        helm install chart/`<project name>` --name=`<release name>` --set image.repository=`<image name>` --set image.tag=`<tag value>` --set image.pullPolicy=`<pull policy>`
+        helm install chart/`<application name>` --name=`<release name>` --set image.repository=`<image name>` --set image.tag=`<tag value>` --set image.pullPolicy=`<pull policy>`
 
         Where:
 
-        - `<project name>`
+        - `<application name>`
 
-            The name you gave to your project when you generated it.
+            The name you gave to your application when you generated it.
 
         - `<release name>`
 
@@ -237,7 +238,7 @@ Deploy to Kubernetes using Helm or the IBM Cloud Developer Tools.
 
     1. The tool will prompt for registry/image name, then push your image and install your Helm chart to the Kubernetes environment pointed to by your KUBECONFIG environment variable.
 
-    1. For IBM Cloud, set KUBECONFIG using the 'ibmcloud cs cluster-config `<cluster name>` command.  Note this command is installed as part of IBM Cloud Developer Tools.
+    1. For IBM Cloud, set KUBECONFIG using `ibmcloud cs cluster-config <cluster name>`.  Note this command is installed as part of IBM Cloud Developer Tools.
 
 ### Clound Foundry Deployment
 

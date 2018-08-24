@@ -183,10 +183,6 @@ module.exports = class extends Generator {
         {
           name: 'Kubernetes',
           value: 'Kube'
-        },
-        {
-          name: 'VSI',
-          value: 'VSI'
         }
       ],
       default: 'Cloud Foundry'

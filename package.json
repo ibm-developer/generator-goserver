@@ -1,6 +1,6 @@
 {
   "name": "generator-goserver",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Generates a goserver project.",
   "main": "generators/app/index.js",
   "engines": {

@@ -8,6 +8,7 @@
 [![DownloadsTotal][img-npm-downloads-total]][url-npm]
 [![License][img-license]][url-npm]
 
+[img-license]: https://img.shields.io/npm/l/generator-nodeserver.svg
 [img-ibmcloud-powered]: https://img.shields.io/badge/IBM%20Cloud-powered-blue.svg
 [url-cloud]: http://bluemix.net
 [url-npm]: https://www.npmjs.com/package/generator-goserver
@@ -139,19 +140,6 @@ yo goserver --bluemix='{"name":"your-app-name","swaggerFilePath":"path-to-your-f
 ```
 
 Note: you can only provide a swagger path if it is a blank application.
-
-#### Valid Services
-
-* 'watson assistant'
-* 'watson discovery'
-* 'watson language translator'
-* 'watson natural language classifier'
-* 'watson language understanding'
-* 'watson personality insights'
-* 'watson speech to text'
-* 'watson text to speech'
-* 'watson tone analyzer'
-* 'watson visual recognition'
 
 ## Project Build/Run
 

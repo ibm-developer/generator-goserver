@@ -140,19 +140,6 @@ yo goserver --bluemix='{"name":"your-app-name","swaggerFilePath":"path-to-your-f
 
 Note: you can only provide a swagger path if it is a blank application.
 
-#### Valid Services
-
-* 'watson assistant'
-* 'watson discovery'
-* 'watson language translator'
-* 'watson natural language classifier'
-* 'watson language understanding'
-* 'watson personality insights'
-* 'watson speech to text'
-* 'watson text to speech'
-* 'watson tone analyzer'
-* 'watson visual recognition'
-
 ## Project Build/Run
 
 Build your generated project one of two ways:

@@ -8,7 +8,6 @@
 [![DownloadsTotal][img-npm-downloads-total]][url-npm]
 [![License][img-license]][url-npm]
 
-[img-license]: https://img.shields.io/npm/l/generator-nodeserver.svg
 [img-ibmcloud-powered]: https://img.shields.io/badge/IBM%20Cloud-powered-blue.svg
 [url-cloud]: http://bluemix.net
 [url-npm]: https://www.npmjs.com/package/generator-goserver

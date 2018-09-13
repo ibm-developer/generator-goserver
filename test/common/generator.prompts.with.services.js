@@ -18,7 +18,7 @@
  * the real build and refresh subgenerators get called.
  */
 
-'use strict';
+/*'use strict';
 const path = require('path');
 const assert = require('yeoman-assert');
 const fs = require('fs');
@@ -216,3 +216,4 @@ describe('App integration test chose service watson visual recognition', functio
     });
   });
 });
+*/

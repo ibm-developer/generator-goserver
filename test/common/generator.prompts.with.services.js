@@ -48,7 +48,7 @@ function clean() {
 
 describe('App integration test chose service watson assistant', function () {
   this.timeout(5000);
-  
+
   beforeEach(function () {
     newAppPath();
     // Mock the options, set up an output folder and run the generator
@@ -216,3 +216,4 @@ describe('App integration test chose service watson visual recognition', functio
     });
   });
 });
+

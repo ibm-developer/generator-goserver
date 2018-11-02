@@ -27,7 +27,7 @@ const myHelpers = require('../../lib/helpers.js');
 
 describe('App integration test chose service watson assistant', function () {
   this.timeout(5000);
-  
+
   let bluemixOptions = fs.readFileSync(path.join(__dirname, '../../test/resources/bluemix-template.json'), 'utf8');
   bluemixOptions = myHelpers.storeServiceName(JSON.parse(bluemixOptions), 'watson assistant');
   before(function () {
@@ -211,3 +211,4 @@ describe('App integration test chose service watson personality insights', funct
     });
   });
 });
+

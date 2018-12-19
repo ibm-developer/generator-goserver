@@ -1,6 +1,6 @@
 {
   "name": "generator-goserver",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Generates a goserver project.",
   "main": "generators/app/index.js",
   "license": "Apache-2.0",

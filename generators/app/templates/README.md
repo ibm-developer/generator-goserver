@@ -1,4 +1,4 @@
-## <%= bluemix.name %>
+## {{bluemix.name}}
 
 [![](https://img.shields.io/badge/IBM%20Cloud-powered-blue.svg)](https://bluemix.net)
 ![Platform](https://img.shields.io/badge/platform-go-lightgrey.svg?style=flat)
@@ -13,22 +13,26 @@
 <a name="summary"></a>
 ### Summary
 
-<% if (spec.applicationType == 'WEBAPP') { -%>
+{{#ifCond spec.applicationType '==' 'WEBAPP'}}
 The Web basic starter contains an opinionated set of files for web serving:
 
 - `public/index.html`
 - `public/404.html`
 - `public/500.html`
-<% } -%>
-<% if (spec.applicationType == 'MS') { -%>
+{{/ifCond}}
+{{#ifCond spec.applicationType '==' 'MS'}}
 A microservice is an individual component of an application that follows the microservice architecture - an architectural style that structures an application as a collection of loosely coupled services, which implement business capabilities. The microservice exposes a RESTful API matching a [OpenAPI 2.0](https://swagger.io/docs/specification/2-0/basic-structure/) definition.
-<% } -%>
-<% if (spec.applicationType == 'BLANK' && !bluemix.openApiServers) { -%>
+{{/ifCond}}
+{{#ifCond spec.applicationType '==' 'BLANK'}}
+{{#if !bluemix.openApiServers}}
 This is a blank Go application that provides a basic foundation for deploying to IBM Cloud.
-<% } -%>
-<% if (spec.applicationType == 'BLANK' && bluemix.openApiServers) { -%>
+{{/if}}
+{{/ifCond}}
+{{#ifCond spec.applicationType '==' 'BLANK'}}
+{{#if bluemix.openApiServers}}
 This application generated stubs for each route defined in the provided OpenAPI 2.0 document. It follows the microservice architecture - an architectural style that structures an application as a collection of loosely coupled services, which implement business capabilities. This application exposes a RESTful API matching a [OpenAPI 2.0](https://swagger.io/docs/specification/2-0/basic-structure/) definition that you provided. 
-<% } -%>
+{{/if}}
+((/ifCond}}
 
 #### Gopkg.toml
 
@@ -83,7 +87,7 @@ ibmcloud dev run
 
 #### Using your local development environment
 
-In order for Go applications to run locally, they must be placed in the correct file path. The application must exist in `$GOPATH/src/<%= bluemix.sanitizedName %>`
+In order for Go applications to run locally, they must be placed in the correct file path. The application must exist in `$GOPATH/src/{{bluemix.sanitizedName}}`
 
 To run your application locally:
 
@@ -104,8 +108,14 @@ Your sources will be compiled to your `$GOPATH/bin` directory.
 
 Your application is running at: `http://localhost:8080` in your browser.
 
-<% if (spec.applicationType == 'MS' || (spec.applicationType == 'BLANK' && bluemix.openApiServers)) { -%>
+{{#ifCond spec.applicationType '==' 'MS'}}
 - Your [Swagger UI](http://swagger.io/swagger-ui/) is running on: `/explorer`
 - Your OpenAPI 2.0 definition is hosted on: `/swagger/api`
-<% } -%>
+{{/ifCond}}
+{{#ifCond spec.applicationType '==' 'BLANK'}}
+{{#if bluemix.openApiServers}}
+- Your [Swagger UI](http://swagger.io/swagger-ui/) is running on: `/explorer`
+- Your OpenAPI 2.0 definition is hosted on: `/swagger/api`
+{{/if}}
+{{/ifCond}}
 - Health endpoint: `/health`

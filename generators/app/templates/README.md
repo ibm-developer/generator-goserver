@@ -24,15 +24,15 @@ The Web basic starter contains an opinionated set of files for web serving:
 A microservice is an individual component of an application that follows the microservice architecture - an architectural style that structures an application as a collection of loosely coupled services, which implement business capabilities. The microservice exposes a RESTful API matching a [OpenAPI 2.0](https://swagger.io/docs/specification/2-0/basic-structure/) definition.
 {{/ifCond}}
 {{#ifCond spec.applicationType '==' 'BLANK'}}
-{{#if !bluemix.openApiServers}}
+{{#ifCond bluemix.openApiServers '==' 'undefined'}}
 This is a blank Go application that provides a basic foundation for deploying to IBM Cloud.
-{{/if}}
+{{/ifCond}}
 {{/ifCond}}
 {{#ifCond spec.applicationType '==' 'BLANK'}}
-{{#if bluemix.openApiServers}}
-This application generated stubs for each route defined in the provided OpenAPI 2.0 document. It follows the microservice architecture - an architectural style that structures an application as a collection of loosely coupled services, which implement business capabilities. This application exposes a RESTful API matching a [OpenAPI 2.0](https://swagger.io/docs/specification/2-0/basic-structure/) definition that you provided. 
-{{/if}}
-((/ifCond}}
+{{#ifCond bluemix.openApiServers '!==' 'undefined'}}
+This application generated stubs for each route defined in the provided OpenAPI 2.0 document. It follows the microservice architecture - an architectural style that structures an application as a collection of loosely coupled services, which implement business capabilities. This application exposes a RESTful API matching a [OpenAPI 2.0](https://swagger.io/docs/specification/2-0/basic-structure/) definition that you provided.
+{{/ifCond}}
+{{/ifCond}}
 
 #### Gopkg.toml
 

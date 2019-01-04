@@ -3,7 +3,7 @@
 [![](https://img.shields.io/badge/IBM%20Cloud-powered-blue.svg)](https://bluemix.net)
 ![Platform](https://img.shields.io/badge/platform-go-lightgrey.svg?style=flat)
 
-### Table of Contents
+## Table of Contents
 
 * [Summary](#summary)
 * [Requirements](#requirements)
@@ -11,7 +11,7 @@
 * [Run](#run)
 
 <a name="summary"></a>
-### Summary
+## Summary
 
 {{#ifCond spec.applicationType '==' 'WEBAPP'}}
 The Web basic starter contains an opinionated set of files for web serving:
@@ -34,58 +34,57 @@ This application generated stubs for each route defined in the provided OpenAPI 
 {{/ifCond}}
 {{/ifCond}}
 
-#### Gopkg.toml
 
-Ensure that all of your `dep` dependencies are stored inside of `Gopkg.toml`.
+All of your `dep` dependencies are stored inside of `Gopkg.toml`.
+
+## Requirements
+#### Local Development Setup (optional)
+
+- Install [Go](https://golang.org/dl/)
+- Install [dep](https://github.com/golang/dep)
+
+### IBM Cloud Developer Tools (optional)
+
+[IBM Cloud Developer Tools](https://cloud.ibm.com/docs/cli/index.html#overview) simplifies the building, running, and deployment of your application from you local environment to the cloud in containerized environments.
+
+1. Install [IBM Cloud Developer Tools](https://cloud.ibm.com/docs/cli/index.html#step1) on your machine  
+2. Install the dev plugin: `ibmcloud plugin install dev`
 
 #### cli-config.yml
 
-Update the following commands in `cli-config.yml` to match the commands you use in your project:
-* `test-cmd`: The command to execute tests for the code in the tools container<br/>
-(i.e. `go test ./...`)
-* `build-cmd-debug`: The command to build the code and docker image for `DEBUG` mode<br/>
-(i.e. `go build` to ensure that the application compiles cleanly)
-* `debug-cmd`: The command to execute debug of the code in the tools container using [delve](https://github.com/derekparker/delve)<br/>
-(i.e. `dlv debug --headless --listen=0.0.0.0:8181`)
+The `cli-config.yml` contains the commands that are used by IBM Cloud Developer Tools.  If needed, you can update these to reflect how you want to run your project:
+* `test-cmd`: The command to execute tests for the code in the tools container (i.e. `go test ./...`)
 
-<a name="enablement"></a>
-### IBM Cloud Enablement
+* `build-cmd-debug`: The command to build the code and docker image for `DEBUG` mode (i.e. `go build` to ensure that the application compiles cleanly)
 
-<a name="requirements"></a>
-### Requirements
-#### Local Development Tools Setup (optional)
+* `debug-cmd`: The command to execute debug of the code in the tools container using [delve](https://github.com/derekparker/delve) (i.e. `dlv debug --headless --listen=0.0.0.0:8181`)
 
-- If you don't already have it, install [Go](https://golang.org/dl/)
-- Install [dep](https://github.com/golang/dep)
+### IBM Cloud DevOps (optional)
 
-#### IBM Cloud development tools setup (optional)
+[![Create Toolchain](https://cloud.ibm.com/devops/graphics/create_toolchain_button.png)](https://cloud.ibm.com/devops/setup/deploy/)
 
-1. Install [IBM Cloud Developer Tools](https://console.bluemix.net/docs/cli/idt/setting_up_idt.html#add-cli) on your machine  
-2. Install the dev plugin: `ibmcloud plugin install dev`
+[IBM Cloud DevOps](https://cloud.ibm.com/devops/getting-started) services provides toolchains as a set of tool integrations that support development, deployment, and operations tasks inside IBM Cloud. The **Create Toolchain** button creates a DevOps toolchain and acts as a single-click deploy to IBM Cloud including provisioning all required services.
 
-#### IBM Cloud DevOps setup (optional)
+## Run
 
-[![Create Toolchain](https://console.ng.bluemix.net/devops/graphics/create_toolchain_button.png)](https://console.ng.bluemix.net/devops/setup/deploy/)
+#### Configuration
 
-[IBM Cloud DevOps](https://www.ibm.com/cloud-computing/bluemix/devops) services provides toolchains as a set of tool integrations that support development, deployment, and operations tasks inside IBM Cloud. The "Create Toolchain" button creates a DevOps toolchain and acts as a single-click deploy to IBM Cloud including provisioning all required services.
+This project contains IBM Cloud specific files that are used to deploy the application as part of an IBM Cloud DevOps flow. The `.bluemix` directory contains files used to define the IBM Cloud toolchain and pipeline for your application.
 
-<a name="configuration"></a>
-### Configuration
+Credentials are either taken from the VCAP_SERVICES or Kubernetes environment variablea if in IBM Cloud, or from a config file if running locally or on VSIs.
 
-The project contains IBM Cloud specific files that are used to deploy the application as part of an IBM Cloud DevOps flow. The `.bluemix` directory contains files used to define the IBM Cloud toolchain and pipeline for your application. The `manifest.yml` file specifies the name of your application in IBM Cloud, the timeout value during deployment, and which services to bind to.
+More information about configuration best practices and abstraction of environments can be found in the IBM Cloud [Go Programming Guide](https://cloud.ibm.com/docs/go/configuration.html#configuration).
 
-Credentials are either taken from the VCAP_SERVICES environment variable if in IBM Cloud, or from a config file if running locally.
+### Using IBM Cloud Developer Tools
 
-#### Using IBM Cloud development CLI
-
-The IBM Cloud development plugin makes it easy to compile and run your application if you do not have all of the tools installed on your computer yet. Your application will be compiled with Docker containers. To compile and run your app, run:
+ IBM Cloud Developer Tools makes it easy to compile and run your application if you do not have all of the tools installed on your computer yet. Your application will be compiled with Docker containers. To compile and run your app, run:
 
 ```bash
 ibmcloud dev build
 ibmcloud dev run
 ```
 
-#### Using your local development environment
+### Using your local environment
 
 In order for Go applications to run locally, they must be placed in the correct file path. The application must exist in `$GOPATH/src/{{bluemix.sanitizedName}}`
 
@@ -104,7 +103,7 @@ go install
 
 Your sources will be compiled to your `$GOPATH/bin` directory.
 
-##### Endpoints
+### Application Endpoints
 
 Your application is running at: `http://localhost:8080` in your browser.
 

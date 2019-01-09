@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.3"></a>
+## [1.0.3](https://github.com/ibm-developer/generator-goserver/compare/v1.0.2...v1.0.3) (2019-01-09)
+
+
+### Bug Fixes
+
+* got rid of ejs tags ([cd22eea](https://github.com/ibm-developer/generator-goserver/commit/cd22eea))
+* got rid of ejs tags ([50e8f8a](https://github.com/ibm-developer/generator-goserver/commit/50e8f8a))
+
+
+
 <a name="1.0.2"></a>
 ## [1.0.2](https://github.com/ibm-developer/generator-goserver/compare/v1.0.1...v1.0.2) (2018-12-19)
 

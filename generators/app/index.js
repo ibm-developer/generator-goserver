@@ -24,6 +24,7 @@ const logger = Log4js.getLogger("generator-goserver");
 const path = require('path');
 const os = require('os');
 const fs = require('fs');
+const Handlebars = require('../../lib/handlebars.js');
 const helpers = require('../../lib/helpers.js');
 const services = require('./services/services');
 const OPTION_BLUEMIX = 'bluemix';
@@ -237,7 +238,7 @@ module.exports = class extends Generator {
         // Place the app in GOPATH/src/<appname>
         this.destinationRoot(path.join(process.env.GOPATH, 'src/', this.options.bluemix.sanitizedName));
       }
-    } 
+    }
   }
 
   // store specified option in bluemix object to drive generator-ibm-service-enablement
@@ -297,6 +298,11 @@ module.exports = class extends Generator {
       this.destinationPath('README.md'),
       this.options
     );
+
+    this._writeHandlebarsFile('README.md', 'README.md', {
+      spec: this.options.spec,
+      bluemix: this.options.bluemix
+    });
   }
 
   // Return true if 'sanitized', false if missing, exception if bad data
@@ -327,5 +333,12 @@ module.exports = class extends Generator {
         name + ' parameter is expected to be a valid stringified JSON object'
       );
     }
+  }
+
+  _writeHandlebarsFile(templateFile, destinationFile, data) {
+    let template = this.fs.read(this.templatePath(templateFile));
+    let compiledTemplate = Handlebars.compile(template);
+    let output = compiledTemplate(data);
+    this.fs.write(this.destinationPath(destinationFile), output);
   }
 };

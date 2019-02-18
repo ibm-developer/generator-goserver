@@ -18,7 +18,7 @@ script:
   - NODE_ENV=production node /tmp/standard-npm-devops/install_linked_dependencies.js || travis_terminate 1
   - npm run lint || travis_terminate 1
   - npm test || travis_terminate 1
-  - npm run coveralls || travis_terminate 1
+#  - npm run coveralls || travis_terminate 1
   - /tmp/standard-npm-devops/do_devops.sh
 branches:
   only:

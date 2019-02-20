@@ -11,12 +11,18 @@ before_script:
 - mv hub-linux-386-2.5.1 hub
 - export GOPATH="/tmp/go"
 - export PATH=${PATH}:/tmp/hub/bin:${GOPATH}/bin
-- git clone -b master https://github.com/ibm-developer/standard-npm-devops.git
+- git clone https://github.com/ibm-developer/standard-npm-devops.git
+- npm --prefix ./standard-npm-devops install fs-extra bluebird 
 - cd -
-script: npm test && npm run coveralls && /tmp/standard-npm-devops/do_devops.sh
+script:
+  - NODE_ENV=production node /tmp/standard-npm-devops/install_linked_dependencies.js || travis_terminate 1
+  - npm run lint || travis_terminate 1
+  - npm test || travis_terminate 1
+#  - npm run coveralls || travis_terminate 1
+  - /tmp/standard-npm-devops/do_devops.sh
 branches:
   only:
   - master
   - develop
 env:
-  - DEV_BRANCH=develop PROD_BRANCH=master DEVOPS_SCRIPT_DIR="/tmp/standard-npm-devops"
+  - DEV_BRANCH=develop PROD_BRANCH=master DEVOPS_SCRIPT_DIR="/tmp/standard-npm-devops" UPDATE_DEPENDENCIES="./linked_dependencies.json"

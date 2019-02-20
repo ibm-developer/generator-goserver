@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.4"></a>
+## [1.0.4](https://github.com/ibm-developer/generator-goserver/compare/v1.0.3...v1.0.4) (2019-02-20)
+
+
+### Bug Fixes
+
+* add devops scripts to update sub-generators ([4376018](https://github.com/ibm-developer/generator-goserver/commit/4376018))
+* pass in dependencies configuration to devops ([4a26755](https://github.com/ibm-developer/generator-goserver/commit/4a26755))
+* temporarily remove coverall ([a6243c0](https://github.com/ibm-developer/generator-goserver/commit/a6243c0))
+
+
+
 <a name="1.0.3"></a>
 ## [1.0.3](https://github.com/ibm-developer/generator-goserver/compare/v1.0.2...v1.0.3) (2019-01-09)
 

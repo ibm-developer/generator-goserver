@@ -13,7 +13,11 @@
     "repo": "https://github.com/ibm-developer/generator-ibm-service-enablement.git"
   },
   {
-    "name": "generator-ibm-usecase-enablement",
-    "repo": "https://github.com/ibm-developer/generator-ibm-usecase-enablement.git"
+    "name": "generator-ibm-core-golang-gin",
+    "repo": "https://github.com/ibm-developer/generator-ibm-core-golang-gin.git"
+  },
+  {
+    "name": "generator-ibm-web",
+    "repo": "https://github.com/ibm-developer/generator-ibm-web.git"
   }
 ]

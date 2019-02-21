@@ -12,7 +12,7 @@ before_script:
 - export GOPATH="/tmp/go"
 - export PATH=${PATH}:/tmp/hub/bin:${GOPATH}/bin
 - git clone https://github.com/ibm-developer/standard-npm-devops.git
-- npm --prefix ./standard-npm-devops install fs-extra bluebird 
+- npm --prefix ./standard-npm-devops install fs-extra bluebird
 - cd -
 script:
   - NODE_ENV=production node /tmp/standard-npm-devops/install_linked_dependencies.js || travis_terminate 1

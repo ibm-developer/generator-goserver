@@ -66,7 +66,7 @@ describe('App integration test chose service watson assistant', function () {
 
   describe('basic file structure test', function () {
     it('generates the expected watson assistant files', function () {
-      assert.file("services/service_watson_assistant.go");
+      assert.file("services/service_watson_conversation.go");
     });
   });
   describe('services.go', () => {
@@ -216,4 +216,3 @@ describe('App integration test chose service watson visual recognition', functio
     });
   });
 });
-

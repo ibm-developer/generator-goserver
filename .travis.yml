@@ -15,12 +15,12 @@ before_script:
 - npm --prefix ./standard-npm-devops install fs-extra bluebird
 - cd -
 script:
-  - NODE_ENV=production node /tmp/standard-npm-devops/install_linked_dependencies.js || travis_terminate 1
-  - npm run lint || travis_terminate 1
-  - npm test || travis_terminate 1
-  - npm run coveralls || travis_terminate 1
-  - /tmp/standard-npm-devops/do_devops.sh
-  - if [ -z $TRAVIS_PULL_REQUEST_BRANCH ]; then $DEVOPS_SCRIPT_DIR/do_devops_insights_reporting.sh; fi
+- NODE_ENV=production node /tmp/standard-npm-devops/install_linked_dependencies.js || travis_terminate 1
+- npm run lint || travis_terminate 1
+- npm test || travis_terminate 1
+- npm run coveralls || travis_terminate 1
+- /tmp/standard-npm-devops/do_devops.sh
+- $DEVOPS_SCRIPT_DIR/do_devops_insights_reporting.sh
 branches:
   only:
   - master

@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.5"></a>
+## [1.0.5](https://github.com/ibm-developer/generator-goserver/compare/v1.0.4...v1.0.5) (2019-09-03)
+
+
+### Bug Fixes
+
+* add devops scripts to update sub-generators ([3be397e](https://github.com/ibm-developer/generator-goserver/commit/3be397e))
+* npm audit dependency upgrade ([686915a](https://github.com/ibm-developer/generator-goserver/commit/686915a))
+
+
+
 <a name="1.0.4"></a>
 ## [1.0.4](https://github.com/ibm-developer/generator-goserver/compare/v1.0.3...v1.0.4) (2019-02-20)
 

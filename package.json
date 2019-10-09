@@ -23,7 +23,7 @@
     "generator-ibm-service-enablement": "3.4.10",
     "generator-ibm-usecase-enablement": "3.2.8",
     "generator-ibm-web": "1.4.11",
-    "handlebars": "^4.1.2",
+    "handlebars": "^4.4.3",
     "js-yaml": "^3.13.1",
     "lodash": "^4.17.15",
     "log4js": "^3.0.5",

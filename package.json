@@ -28,7 +28,7 @@
     "lodash": "^4.17.15",
     "log4js": "^3.0.5",
     "yeoman-generator": "^2.0.1",
-    "yo": "^2.0.5",
+    "yo": "^3.1.1",
     "yosay": "^2.0.1"
   },
   "scripts": {
@@ -46,9 +46,8 @@
     "eslint-plugin-ejs": "0.0.2",
     "mocha": "^5.2.0",
     "mocha-multi-reporters": "^1.1.7",
-    "nsp": "^3.2.1",
     "nyc": "^14.1.1",
-    "standard-version": "^4.3.0",
+    "standard-version": "^7.1.0",
     "xunit-file": "^1.0.0",
     "yeoman-assert": "^3.1.0",
     "yeoman-test": "^1.7.0"

@@ -1,10 +1,5 @@
 [
   {
-    "name": "common-codegen-tests",
-    "repo": "https://github.com/ibm-developer/common-codegen-tests.git",
-    "npm_dir": "common-codegen-tests/npm"
-  },
-  {
     "name": "generator-ibm-cloud-enablement",
     "repo": "https://github.com/ibm-developer/generator-ibm-cloud-enablement.git"
   },
